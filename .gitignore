@@ -1,2 +1,10 @@
 # Dependency directories
 node_modules/
+node_modules/*
+
+# managed by open-wa
+**.data.json
+**.node-persist**
+**_IGNORE_**
+*.data.json
+# end managed by open-wa

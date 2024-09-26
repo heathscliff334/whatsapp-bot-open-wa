@@ -1,30 +1,15 @@
-// const { create, Client } = require('@open-wa/wa-automate');
-
-// create().then((client) => startBot(client));
-
-// function startBot(client) {
-//     client.onMessage((message) => {
-//         if (message.body === 'hi') {
-//             client.sendText(message.from, `Hello! This is your WhatsApp bot. \n timestamp: ${Date.now()}`);
-//         }
-//     });
-// }
-
 const wa = require('@open-wa/wa-automate');
-const axios = require('axios'); // Import axios for HTTP requests
+// Import axios for HTTP requests
+const axios = require('axios');
 
 wa.create({
     sessionId: "COVID_HELPER",
-    // multiDevice: true, //required to enable multiDevice support
-    multiDevice: false,
+    multiDevice: true, //required to enable multiDevice support
     authTimeout: 60, //wait only 60 seconds to get a connection with the host account device
     blockCrashLogs: true,
     disableSpins: true,
-    // headless: true, //true
-    headless: true,
+    headless: true, // set to true for VPS / CLI base
     hostNotificationLang: 'PT_BR',
-    // executablePath: '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome', // Adjust path to where Chrome is installed
-
     logConsole: false,
     // deleteSessionDataOnLogout: true, // Automatically clear session data on logout
     popup: false,
@@ -46,7 +31,9 @@ function start(client) {
             } else {
                 await client.sendText(message.from, 'Invalid format. Please use: daftar #name #date #location');
             }
-        } else if (message.body.startsWith('!ask')) {
+        }
+        // Vertex genAI integration through API call
+        else if (message.body.startsWith('!ask')) {
             const question = message.body.replace('!ask', '').trim(); // Extract the question after !ask:
             if (question) {
                 try {

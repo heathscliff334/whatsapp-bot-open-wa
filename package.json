@@ -4,12 +4,13 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "node app.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@open-wa/wa-automate": "^4.71.15",
+    "@open-wa/wa-automate": "^4.72.5",
     "axios": "^1.7.7",
     "to": "^0.2.9",
     "update": "^0.7.4"
